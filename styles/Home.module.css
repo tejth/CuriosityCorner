@@ -43,6 +43,8 @@
   grid-template-columns: repeat(4, minmax(25%, auto));
   max-width: var(--max-width);
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+    /* Main shadow */ 0 0 25px rgba(0, 255, 0, 0.5); /* Glowing shadow */
 }
 
 .card {
