@@ -15,34 +15,24 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className={styles.mainnav}>
-        <ul>
-          <Link href={"/"}>
-            <li>Home</li>
-          </Link>
-          <Link href={"/about"}>
-            <li>About</li>
-          </Link>
-          <Link href={"/blog"}>
-            <li>Blog</li>
-          </Link>
-          <Link href={"/contact"}>
-            <li>Contact</li>
-          </Link>
-        </ul>
-      </nav>
+
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}></div>
 
-        <div className={styles.center}>
-          <div className={styles.imageTextContainer}>
-            <h1>Curiosity</h1> <h3>Corner!</h3>
-            <p className={styles.imageText}>
-              "A blogging website for data science lovers."
+        <div className={styles.squre}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <div className={styles.content}>
+            <h2>Curiosity Corner!</h2>
+            <p>
+              "A blogging website for data science enthusiasts that provides
+              insights into machine learning concepts and the development of
+              various models."
             </p>
+            <p>🧑‍💻</p>
           </div>
         </div>
-
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
