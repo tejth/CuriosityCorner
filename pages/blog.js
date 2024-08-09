@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/Blog.module.css";
 import Link from "next/link";
 
-// Step 1: Collect all the files from the blogdata directory
-// Step 2: Iterate through them and Display them
+// Step 1: Collect all the files from blogdata directory
+// Step 2: Iterate through the and Display them
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -14,7 +14,6 @@ const Blog = () => {
         return a.json();
       })
       .then((parsed) => {
-        console.log(parsed);
         setBlogs(parsed);
       });
   }, []);
@@ -38,5 +37,14 @@ const Blog = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  let data = await fetch("http://localhost:3000/api/blogs");
+  let allBlogs = await data.json();
+
+  return {
+    props: { allBlogs }, // will be passed to the page component as props
+  };
+}
 
 export default Blog;
