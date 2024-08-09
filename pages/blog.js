@@ -27,12 +27,6 @@ const blog = () => {
             <p>Js is a language designed for web!</p>
           </Link>
         </div>
-        <div className={styles.blogItem}>
-          <Link href={"/blogpost/lear-javascript"}>
-            <h1>How to learn js in 2022?</h1>
-            <p>Js is a language designed for web!</p>
-          </Link>
-        </div>
       </main>
     </div>
   );
