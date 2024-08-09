@@ -1,35 +1,42 @@
-import React from "react";
-import styles from "../styles/blog.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "../styles/Blog.module.css";
 import Link from "next/link";
 
-// step 1:- collect all the files from blog data directory.
-// step 2:- Iterate through them and Display them
+// Step 1: Collect all the files from the blogdata directory
+// Step 2: Iterate through them and Display them
 
-const blog = () => {
+const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    console.log("useeffect is running");
+    fetch("http://localhost:3000/api/blogs")
+      .then((a) => {
+        return a.json();
+      })
+      .then((parsed) => {
+        console.log(parsed);
+        setBlogs(parsed);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <div className={styles.blogItem}>
-          <Link href={"/blogpost/lear-javascript"}>
-            <h1>How to learn js in 2022?</h1>
-            <p>Js is a language designed for web!</p>
-          </Link>
-        </div>
-        <div className={styles.blogItem}>
-          <Link href={"/blogpost/lear-javascript"}>
-            <h1>How to learn js in 2022?</h1>
-            <p>Js is a language designed for web!</p>
-          </Link>
-        </div>
-        <div className={styles.blogItem}>
-          <Link href={"/blogpost/lear-javascript"}>
-            <h1>How to learn js in 2022?</h1>
-            <p>Js is a language designed for web!</p>
-          </Link>
-        </div>
+        {blogs.map((blogitem) => {
+          return (
+            <div key={blogitem.slug}>
+              <Link href={`/blogpost/${blogitem.slug}`}>
+                <h3 className={styles.blogItemh3}>{blogitem.title}</h3>
+              </Link>
+              <p className={styles.blogItemp}>
+                {blogitem.content.substr(0, 140)}...
+              </p>
+            </div>
+          );
+        })}
       </main>
     </div>
   );
 };
 
-export default blog;
+export default Blog;
