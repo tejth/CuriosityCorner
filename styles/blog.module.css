@@ -1,19 +1,110 @@
-.main {
+.container {
+  color: #e0e0e0;
+  padding: 4rem;
   min-height: 100vh;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 3rem;
 }
 
-.blogItemh3 {
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.blogCard {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
-  font-size: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.blogItemp {
-  max-width: 45vw;
+.blogCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.blogCard:hover::before {
+  opacity: 1;
+}
+
+.blogCard:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+  background: #2d2d2d;
+}
+
+.blogLink {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures the link takes full width */
+  height: 100%; /* Ensures the link takes full height */
+}
+
+.blogContent {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers text */
+}
+
+.blogTitle {
+  font-size: 1.9rem;
+  color: #f1c40f;
+  margin: 0 0 0.5rem;
+  transition: color 0.3s ease;
+  text-align: center; /* Center-align text */
+}
+
+.blogTitle:hover {
+  color: #e67e22;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+.blogDescription {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  text-align: center; /* Center-align text */
+}
+
+@media (min-width: 1024px) {
+  .main {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .blogCard {
+    border-radius: 8px;
+  }
+
+  .blogTitle {
+    font-size: 1.6rem;
+  }
+
+  .blogDescription {
+    font-size: 1rem;
+  }
 }

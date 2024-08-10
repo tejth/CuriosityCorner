@@ -5,6 +5,38 @@
   align-items: center;
   min-height: 80vh;
 }
+.mainnav ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-family: var(--font-mono);
+}
+
+.mainnav ul li {
+  margin: 0 24px;
+  list-style: none;
+  font-weight: bold;
+  position: relative; /* Position relative for the underline effect */
+  padding-bottom: 4px; /* Space for the underline */
+}
+
+.mainnav ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* Height of the underline */
+  background-color: #f1c40f; /* Color of the underline */
+  transform: scaleX(0); /* Initially hidden */
+  transform-origin: bottom right; /* Animation effect */
+  transition: transform 0.3s ease; /* Animation duration */
+}
+
+.mainnav ul li.active::after {
+  transform: scaleX(1); /* Show the underline */
+  transform-origin: bottom left; /* Animation effect */
+}
 
 .description {
   display: inherit;

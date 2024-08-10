@@ -1,50 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../styles/Blog.module.css";
 import Link from "next/link";
 import * as fs from "fs";
-
-// Step 1: Collect all the files from blogdata directory
-// Step 2: Iterate through the and Display them
+import Image from "next/image";
 
 const Blog = (props) => {
-  console.log(props);
-  const [blogs, setBlogs] = useState(props.allBlogs);
-  // useEffect(() => {
+  const { allBlogs } = props;
 
-  // }, [])
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        {blogs.map((blogitem) => {
-          return (
-            <div key={blogitem.slug}>
-              <Link href={`/blogpost/${blogitem.slug}`}>
-                <h3 className={styles.blogItemh3}>{blogitem.title}</h3>
-              </Link>
-              <p className={styles.blogItemp}>
-                {blogitem.metadesc.substr(0, 140)}...
-              </p>
-            </div>
-          );
-        })}
+        {allBlogs.map((blogitem) => (
+          <div key={blogitem.slug} className={styles.blogCard}>
+            <Link
+              href={`/blogpost/${blogitem.slug}`}
+              className={styles.blogLink}
+            >
+              <div className={styles.blogContent}>
+                <h3 className={styles.blogTitle}>{blogitem.title}</h3>
+                <p className={styles.blogDescription}>
+                  {blogitem.metadesc.length > 140
+                    ? blogitem.metadesc.substr(0, 140) + "..."
+                    : blogitem.metadesc}
+                </p>
+              </div>
+            </Link>
+          </div>
+        ))}
       </main>
     </div>
   );
 };
 
-export async function getStaticProps(context) {
-  let data = await fs.promises.readdir("blogdata");
-  let myfile;
-  let allBlogs = [];
-  for (let index = 0; index < data.length; index++) {
-    const item = data[index];
-    console.log(item);
-    myfile = await fs.promises.readFile("blogdata/" + item, "utf-8");
-    allBlogs.push(JSON.parse(myfile));
-  }
+export async function getStaticProps() {
+  const data = await fs.promises.readdir("blogdata");
+  const allBlogs = await Promise.all(
+    data.map(async (file) => {
+      const fileContent = await fs.promises.readFile(
+        `blogdata/${file}`,
+        "utf-8"
+      );
+      return JSON.parse(fileContent);
+    })
+  );
 
   return {
-    props: { allBlogs }, // will be passed to the page component as props
+    props: { allBlogs },
   };
 }
 

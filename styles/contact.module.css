@@ -1,12 +1,106 @@
+/* contact.module.css */
 .container {
-  max-width: 45vw;
+  background-color: #000;
+  color: #fff;
+  padding: 2rem;
+  max-width: 600px;
   margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
 }
 
-.mb3 {
-  margin-bottom: 21px;
+.heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #f39c12;
 }
 
-.formlabel {
-  margin: 0px 14px;
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #f39c12;
+  outline: none;
+}
+
+.textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.formText {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.button {
+  background-color: #f39c12;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e67e22;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .input,
+  .textarea {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
 }
