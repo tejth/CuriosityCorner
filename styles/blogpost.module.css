@@ -1,10 +1,71 @@
-.main {
-  min-height: 100vh;
-  flex: 1;
+/* Container to center content */
+.container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 3rem;
+  min-height: 100vh; /* Full viewport height */
+  padding: 2rem; /* Add some padding */
+  background: black; /* Background color for the entire page */
+}
+
+/* Main content styling */
+.main {
+  background: #121212; /* Dark gray background for the blog post to differentiate from the page background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2); /* Softer and more prominent shadow */
+  padding: 2rem; /* Padding inside the container */
+  max-width: 800px; /* Max width to control content width */
+  width: 100%; /* Full width of the parent */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.main:hover {
+  transform: scale(1.02); /* Slightly enlarge the container on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 8px 30px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+}
+
+/* Title styling */
+.title {
+  font-size: 2.5rem; /* Larger font size for the title */
+  margin-bottom: 1rem; /* Space below the title */
+  color: #e0e0e0; /* Light gray color for the title to stand out against dark background */
+  text-align: center; /* Center align the title */
+  font-family: "Arial", sans-serif; /* Font for the title */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Horizontal rule styling */
+.separator {
+  border: 0;
+  height: 1px;
+  background: #333; /* Dark gray line for better contrast on a black background */
+  margin: 2rem 0; /* Spacing around the line */
+}
+
+/* Content styling */
+.content {
+  font-size: 1rem; /* Base font size */
+  line-height: 1.6; /* Line height for readability */
+  color: #e0e0e0; /* Light gray color for content to stand out against dark background */
+  font-family: "Georgia", serif; /* Serif font for content */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.content:hover {
+  color: #ffffff; /* White text color on hover for better readability */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .main {
+    padding: 1rem; /* Reduce padding on small screens */
+  }
+
+  .title {
+    font-size: 2rem; /* Adjust title size for small screens */
+  }
+
+  .content {
+    font-size: 0.9rem; /* Adjust font size for small screens */
+  }
 }
