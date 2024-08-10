@@ -18,7 +18,7 @@ const Navbar = () => {
           </li>
         </Link>
         <Link href={"/blog"}>
-          <li className={pathname === "/blog" ? styles.active : ""}>Blog</li>
+          <li className={pathname === "/blog" ? styles.active : ""}>Faq's</li>
         </Link>
         <Link href={"/docs/docmain"}>
           <li className={pathname === "/docs/docmain" ? styles.active : ""}>
